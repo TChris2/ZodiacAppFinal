@@ -7,34 +7,30 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/zodiac_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?attr/textAppearanceHeadline5"
-        android:text="@string/crime_title_label" />
-
-    <EditText
-        android:id="@+id/crime_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:importantForAutofill="no"
-        android:hint="@string/crime_title_hint"
-        android:inputType="text" />
+        android:fontFamily="@font/chaparral"
+        android:text="Zodiac Name" />
 
     <TextView
+        android:id="@+id/zodiac_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?attr/textAppearanceHeadline5"
-        android:text="@string/crime_details_label" />
+        android:fontFamily="@font/chaparral"
+        android:text="Zodiac Description" />
 
-    <Button
-        android:id="@+id/crime_date"
+    <TextView
+        android:id="@+id/zodiac_symbol"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Wed May 11 11:56 EST 2022" />
+        android:fontFamily="@font/chaparral"
+        android:text="Zodiac Symbol" />
 
-    <CheckBox
-        android:id="@+id/crime_solved"
+    <TextView
+        android:id="@+id/zodiac_month"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/crime_solved_label" />
+        android:fontFamily="@font/chaparral"
+        android:text="Zodiac Month" />
 </LinearLayout>
