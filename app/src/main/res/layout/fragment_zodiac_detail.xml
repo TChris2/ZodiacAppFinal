@@ -11,26 +11,48 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/chaparral"
-        android:text="Zodiac Name" />
+        android:text="Zodiac Name"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textColor="#5dbdc2"/>
 
     <TextView
         android:id="@+id/zodiac_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/chaparral"
-        android:text="Zodiac Description" />
+        android:text="Zodiac Description"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textColor="#5dbdc2"/>
 
     <TextView
         android:id="@+id/zodiac_symbol"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/chaparral"
-        android:text="Zodiac Symbol" />
+        android:text="Zodiac Symbol"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textColor="#5dbdc2"/>
 
     <TextView
         android:id="@+id/zodiac_month"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/chaparral"
-        android:text="Zodiac Month" />
+        android:text="Zodiac Month"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textColor="#5dbdc2"/>
+
+    <TextView
+        android:id="@+id/zodiac_daily"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chaparral"
+        android:text="Daily Horoscope"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textColor="#5dbdc2"/>
 </LinearLayout>

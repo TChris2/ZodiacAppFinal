@@ -7,7 +7,8 @@ import java.util.Date
 
 @Entity(tableName = "Zodiac")
 data class Zodiac(
-    @PrimaryKey val id: Integer?,
+    @PrimaryKey(autoGenerate = true)
+    val id: Integer?,
     val name: String?,
     val description: String?,
     val symbol: String?,

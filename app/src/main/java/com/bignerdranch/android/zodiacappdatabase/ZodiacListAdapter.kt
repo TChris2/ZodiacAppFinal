@@ -1,7 +1,6 @@
 package com.bignerdranch.android.zodiacappdatabase
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +21,6 @@ class ZodiacHolder(
     }
 
 }
-
 class ZodiacListAdapter(
     private val zodiacs: List<Zodiac>,
     private val onZodiacClicked: (zodiacId: Int) -> Unit

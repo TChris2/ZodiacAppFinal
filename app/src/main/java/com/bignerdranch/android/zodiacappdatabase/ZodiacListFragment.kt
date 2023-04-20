@@ -19,6 +19,7 @@ import kotlinx.coroutines.launch
 private const val TAG = "ZodiacListFragment"
 
 class ZodiacListFragment : Fragment() {
+    //changed to upper case Z
 
     private var _binding: FragmentZodiacListBinding? = null
     private val binding
@@ -26,7 +27,7 @@ class ZodiacListFragment : Fragment() {
             "Cannot access binding because it is null. Is the view visible?"
         }
 
-    private val crimeListViewModel: ZodiacListViewModel by viewModels()
+    private val zodiacListViewModel: ZodiacListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

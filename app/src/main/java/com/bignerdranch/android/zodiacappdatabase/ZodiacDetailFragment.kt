@@ -11,12 +11,18 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
+import com.bignerdranch.android.zodiacappdatabase.api.ZodiacApi
 import com.bignerdranch.android.zodiacappdatabase.databinding.FragmentZodiacDetailBinding
 import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.create
+
 import java.util.*
 
-class ZodiacDetailFragment : Fragment() {
+private const val TAG = "ZodiacDetailFragment"
 
+class ZodiacDetailFragment : Fragment() {
     private var _binding: FragmentZodiacDetailBinding? = null
     private val binding
         get() = checkNotNull(_binding) {
@@ -25,10 +31,10 @@ class ZodiacDetailFragment : Fragment() {
 
     private val args: ZodiacDetailFragmentArgs by navArgs()
 
+
     private val zodiacDetailViewModel: ZodiacDetailViewModel by viewModels {
         ZodiacDetailViewModelFactory(args.zodiacId)
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,13 +65,27 @@ class ZodiacDetailFragment : Fragment() {
     }
 
     private fun updateUi(zodiac: Zodiac) {
+
+        val retrofit: Retrofit = Retrofit.Builder()
+            .baseUrl("https://zodiac-api-test.onrender.com/")
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build()
+
+        val zodiacApi: ZodiacApi = retrofit.create<ZodiacApi>()
+
+
         binding.apply {
             if (zodiacName.text.toString() != zodiac.name) {
-                zodiacName.setText(zodiac.name)
+                zodiacName.text = zodiac.name
             }
             zodiacDescription.text = zodiac.description
             zodiacSymbol.text = zodiac.symbol
             zodiacMonth.text = zodiac.month
+            viewLifecycleOwner.lifecycleScope.launch {
+                val contents = zodiacApi.fetchContents()
+                val zodiacItem = contents.find { it.sign == zodiac.name?.lowercase(Locale.getDefault()) }
+                zodiacDaily.text = zodiacItem?.title
+            }
 
         }
     }

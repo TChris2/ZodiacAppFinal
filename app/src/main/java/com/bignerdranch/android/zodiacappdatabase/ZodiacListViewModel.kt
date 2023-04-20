@@ -1,5 +1,6 @@
 package com.bignerdranch.android.zodiacappdatabase
 
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -8,16 +9,16 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class ZodiacListViewModel : ViewModel() {
-    private val crimeRepository = ZodiacRepository.get()
+    private val zodiacRepository = ZodiacRepository.get()
 
-    private val _crimes: MutableStateFlow<List<Zodiac>> = MutableStateFlow(emptyList())
-    val crimes: StateFlow<List<Zodiac>>
-        get() = _crimes.asStateFlow()
+    private val _zodiacs: MutableStateFlow<List<Zodiac>> = MutableStateFlow(emptyList())
+    val zodiacs: StateFlow<List<Zodiac>>
+        get() = _zodiacs.asStateFlow()
 
     init {
         viewModelScope.launch {
-            crimeRepository.getCrimes().collect {
-                _crimes.value = it
+            zodiacRepository.getZodiacs().collect {
+                _zodiacs.value = it
             }
         }
     }

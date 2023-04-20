@@ -4,9 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import com.bignerdranch.android.zodiacappdatabase.database.ZodiacDatabase
 import kotlinx.coroutines.flow.Flow
-import java.util.UUID
 
-private const val DATABASE_NAME = "zodiac-database"
+private const val DATABASE_NAME = "zodiac.db"
 
 class ZodiacRepository private constructor(context: Context) {
 
@@ -19,9 +18,9 @@ class ZodiacRepository private constructor(context: Context) {
         .createFromAsset(DATABASE_NAME)
         .build()
 
-    fun getCrimes(): Flow<List<Zodiac>> = database.crimeDao().getCrimes()
+    fun getZodiacs(): Flow<List<Zodiac>> = database.zodiacDao().getZodiacs()
 
-    suspend fun getCrime(id: UUID): Zodiac = database.crimeDao().getCrime(id)
+    suspend fun getZodiac(id: Int): Zodiac = database.zodiacDao().getZodiac(id)
 
     companion object {
         private var INSTANCE: ZodiacRepository? = null
@@ -34,7 +33,7 @@ class ZodiacRepository private constructor(context: Context) {
 
         fun get(): ZodiacRepository {
             return INSTANCE
-                ?: throw IllegalStateException("CrimeRepository must be initialized")
+                ?: throw IllegalStateException("ZodiacRepository must be initialized")
         }
     }
 }
